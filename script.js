@@ -22,12 +22,10 @@ var speed = document.getElementById('rate');
 
 // get voices and languages list and put them in select option
 function loadVoices() {
-   /* if (String(window.performance.getEntriesByType("navigation")[0].type)) {
+  if (String(window.performance.getEntriesByType("navigation")[0].type)) {
     	speechSynthesis.cancel();
 
-	}	*/
- 
-	console.log(String(window.performance.getEntriesByType("navigation")[0].type));
+	}	
 	var voices = speechSynthesis.getVoices();
   
 	voices.forEach(function(voice, i) {
