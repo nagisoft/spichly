@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="favicon.ico" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Spichly</title>
+</head>
+
+<body>
+
+
+    <div class="logo">
+        <div class="visualizer b">
+            <span class="visualizer-item visualizer-1"></span>
+            <span class="visualizer-item visualizer-2"></span>
+            <span class="visualizer-item visualizer-3"></span>
+            <span class="visualizer-item visualizer-4"></span>
+            <span class="visualizer-item visualizer-none"></span>
+        
+        </div>
+        <span class="b">Spichly</span>
+        <div class="visualizer b">
+            <span class="visualizer-item visualizer-1"></span>
+            <span class="visualizer-item visualizer-2"></span>
+            <span class="visualizer-item visualizer-3"></span>
+            <span class="visualizer-item visualizer-4"></span>
+            <span class="visualizer-item visualizer-none"></span>
+        
+        </div>
+    </div>
+<div id="page-wrapper">
+    <div class="parameters">
+        
+
+        <div class="opt b">
+        <div class="select"><select name="voice" id="voice"></select></div></div>
+
+        <div class="opt b tooltip"><button id="speak" class="btn">
+                Read
+            </button>
+            <span class="tooltiptext">Play New text</span>
+        </div>
+
+        <div class="opt b tooltip"><button id="resume" class="btn" ><!--Play icon--><i class="fas fa-play"></i></button>
+        <span class="tooltiptext">Resume</span></div>
+
+        <div class="opt b tooltip"><button id="pause" class="btn" ><!--MP3 icon--><i class="fas fa-pause"></i></button>
+        <span class="tooltiptext">Pause</span></div>
+
+        <div class="opt b tooltip"><i class="fas fa-volume-down b"></i>
+            <input class="range" type="range" name="volume" id="volume" value="0.7" min="0" max="1" step="0.1" onChange="rangeSlide(this.value)"
+                onmousemove="rangeSlide(this.value)"></input>
+                <span class="tooltiptext">Volume</span>
+          <i class="fas fa-volume-up b"></i>
+        </div>
+
+        <div class="opt b tooltip"><object type="image/svg+xml" data="speedometer.svg" class="speedo">
+        </object>
+            <input  class="range" type="range" min="0.1" max="10" step="0.1" name="rate" id="rate" value="1"  onChange="rangeSlide(this.value)"
+                onmousemove="rangeSlide(this.value)">
+            <span class="tooltiptext">Speed</span>
+        </div>
+        
+    </div>
+
+    <textarea id="text" placeholder="Enter text to read..." name="speech-msg" id="speech-msg" x-webkit-speech></textarea>
+     
+    </div>
+
+    <br><br><br>
+    <p id="msg"></p>
+    <div class="container">
+        <div class="interior">
+            <a class="btn" href="#open-modal"><i class="fas fa-question"></i></a>
+        </div>
+    </div>
+    <div id="open-modal" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close">Close</a>
+            <h1>Spichly!</h1>
+            <div>It's a Text-to-Speech application made using javascript and the Speech Synthesis API.</div>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <p>Made by <a href="https://www.linkedin.com/in/soukaina-bensaad/">NagiSoft</a>. <a href=""><i class="fab fa-github"></i></a> </p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+            function rangeSlide(value) {
+                document.getElementById('rangeValue').innerHTML = value;
+                }
+    //Source https://codepen.io/nashvail/pen/wpGgXO
+    // Some random colors
+    const getRandColor = () => {
+            const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            const randColor = "#" + randomColor;
+            return randColor;
+        }
+        const colors = [getRandColor(), getRandColor(), getRandColor(), getRandColor(), getRandColor()];
+
+        const numBalls = 50;
+        const balls = [];
+
+        for (let i = 0; i < numBalls; i++) {
+            let ball = document.createElement("div");
+            ball.classList.add("ball");
+            ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+            ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+            ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+            ball.style.transform = `scale(${Math.random()})`;
+            ball.style.width = `${Math.random()}em`;
+            ball.style.height = ball.style.width;
+
+            balls.push(ball);
+            document.body.append(ball);
+        }
+
+        // Keyframes
+        balls.forEach((el, i, ra) => {
+            let to = {
+                x: Math.random() * (i % 2 === 0 ? -11 : 11),
+                y: Math.random() * 12
+            };
+
+            let anim = el.animate(
+                [
+                    { transform: "translate(0, 0)" },
+                    { transform: `translate(${to.x}rem, ${to.y}rem)` }
+                ],
+                {
+                    duration: (Math.random() + 1) * 2000, // random duration
+                    direction: "alternate",
+                    fill: "both",
+                    iterations: Infinity,
+                    easing: "ease-in-out"
+                }
+            );
+        });
+
+</script>
+    <script src="script.js"></script>
+</body>
+
+</html>
