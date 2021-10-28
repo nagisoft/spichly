@@ -1,4 +1,4 @@
-## Breakly
+## Spichly
 
 Spichly is a Text-to-Speech application made using javascript and the Speech Synthesis API.
 
